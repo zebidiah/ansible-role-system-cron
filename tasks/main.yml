@@ -1,0 +1,6 @@
+---
+# tasks file for system-cron
+
+- include: cron_root.yml
+- include: cron_primary_user.yml
+...

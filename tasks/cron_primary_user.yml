@@ -1,0 +1,9 @@
+---
+- name: Cron job for housekeeping script for user {{ primary_user }}
+  cron:
+    name: "Daily House Keeping"
+    user: "{{ primary_user }}"
+    minute: "0"
+    hour: "*/6"
+    job: "/home/{{ primary_user }}/bin/houseCleaning.sh"
+...

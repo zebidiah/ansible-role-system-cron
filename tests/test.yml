@@ -1,0 +1,12 @@
+---
+# test.yml file for system-cron
+
+- hosts: localhost
+  remote_user: zebidiah
+
+  become_user: root
+  become: true
+  become_method: sudo
+
+  roles:
+    - system-cron

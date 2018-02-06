@@ -1,0 +1,25 @@
+---
+- name: Set enviroment PATH variable for crontab of root user
+  cron:
+    user: "root"
+    name: PATH
+    env: yes
+    value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+    
+- name: Cron job for weekly snapshot & upgrade - system-clean-snapshot-upgrade
+  cron:
+    name: "Weekly Snapshot & Upgrade"
+    user: root
+    minute: "30"
+    hour: "6"
+    weekday: "5"
+    job: "ansible-playbook /etc/ansible/playbooks/clean-snapshot-upgrade.yml"
+
+- name: Cron job for do_daily_task.sh
+  cron:
+    name: "Do Daily Tasks"
+    user: "root"
+    minute: "5"
+    hour: "6"
+    job: "/usr/local/bin/do_daily_tasks.sh"
+...
